@@ -11,3 +11,5 @@ void input(string str, T *a)
     cout << str;
     cin >> *a;
 }
+
+bool first_line(string, int *);

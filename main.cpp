@@ -1,5 +1,6 @@
 #include <iostream>
 #include <string>
+#include <fstream>
 #include "Head.h"
 using namespace std;
 
@@ -17,7 +18,16 @@ int main()
     string file_directories[amount_of_files];
     for (int i = 0; i < amount_of_files; i++)
     {
-        input("Enter the file directory: ", &file_directories[i]);
+        input("Enter the file directory (or file name): ", &file_directories[i]);
+    }
+    //Нахождение кол-ва всех студентов.
+    int amount_of_students = 0;
+    for (int i = 0; i < amount_of_files; i++)
+    {
+        if (!first_line(file_directories[i], &amount_of_students))
+        {
+            return 0;
+        }
     }
     return 0;
 }
