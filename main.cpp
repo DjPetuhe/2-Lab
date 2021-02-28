@@ -2,6 +2,7 @@
 #include <string>
 #include <fstream>
 #include "Head.h"
+#include "StudentClass.h"
 using namespace std;
 
 int main()
