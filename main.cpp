@@ -16,19 +16,19 @@ int main()
         return 0;
     }
     //Ввод директории файлов в массив стрингов.
-    string file_directories[amount_of_files];
+    string *file_directories = new string[amount_of_files];
     for (int i = 0; i < amount_of_files; i++)
     {
         input("Enter the file directory (or file name): ", &file_directories[i]);
     }
     //Нахождение кол-ва всех студентов.
     int amount_of_students = 0;
-    for (int i = 0; i < amount_of_files; i++)
+    if (!first_line(file_directories, &amount_of_students, amount_of_files))
     {
-        if (!first_line(file_directories[i], &amount_of_students))
-        {
-            return 0;
-        }
+        return 0;
     }
+    //Инициализация Массива
+    Student *stud = new Student[amount_of_students];
+    class_inicial(stud, file_directories, amount_of_files);
     return 0;
 }
