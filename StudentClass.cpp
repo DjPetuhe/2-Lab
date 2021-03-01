@@ -4,7 +4,7 @@
 
 void Student::SetName(string str)
 {
-    this->name = str; //Программа почему-то прекращает свое выполнение тут. я пока не разобрался в чем проблема.
+    this->name = str;
 }
 
 void Student::SetNotes(int *marks)

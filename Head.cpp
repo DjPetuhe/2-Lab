@@ -29,13 +29,12 @@ bool first_line(string *file_directories, int *amount_of_students, int amount_of
 /*Функция, которая возвращает значение строки до запятой
 + стирает это значение из первоначальной строки*/
 
-string information_to_the_comma(string &all_information)
+string information_to_the_comma(string &all_information, bool *Contract)
 {
-    cout << all_information << endl;
     int len = all_information.find(',');
     string needful_information = all_information.substr(0, len);
     all_information.erase(0, len + 1);
-    cout << all_information << endl;
+    cout << needful_information << endl;
     return needful_information;
 }
 
@@ -44,12 +43,13 @@ string information_to_the_comma(string &all_information)
 
 void class_inicial(Student *stud, string *file_directories, int amount_of_files)
 {
+    fstream filename;
+    string number;
+    string all_information;
+    int amount_of_students = 0;
+    bool Contract;
     for (int i = 0; i < amount_of_files; i++)
     {
-        fstream filename;
-        string number;
-        string all_information;
-        int amount_of_students;
         filename.open(file_directories[i]);
         getline(filename, number);
         amount_of_students += stoi(number);
@@ -57,21 +57,33 @@ void class_inicial(Student *stud, string *file_directories, int amount_of_files)
         {
             int marks[4];
             getline(filename, all_information);
-            string name = information_to_the_comma(all_information);
+            string name = information_to_the_comma(all_information, &Contract);
             stud[j].SetName(name);
             for (int k = 0; k < 5; k++)
             {
-                marks[k] = stoi(information_to_the_comma(all_information));
+                marks[k] = stoi(information_to_the_comma(all_information, &Contract));
             }
             stud[j].SetNotes(marks);
             if (all_information == "TRUE")
             {
-                stud[j].SetContract(true);
+                Contract = true;
             }
             else
             {
-                stud[j].SetContract(false);
+                Contract = false;
             }
+            stud[j].SetContract(Contract);
         }
+        filename.close();
+    }
+    //Временная часть, отвечающая за вывод масива объектов
+    for (int i = 0; i < 80; i++)
+    {
+        cout << "No " << i << " Name: " << stud[i].GetName() << " Marks: ";
+        for (int j = 0; j < 5; j++)
+        {
+            cout << stud[i].GetNotes()[j] << " ";
+        }
+        cout << "Contract: " << stud[i].GetContract() << endl;
     }
 }

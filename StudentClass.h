@@ -17,7 +17,15 @@ private:
     bool Contract;
 
 public:
-    Student();
+    Student()
+    {
+        this->name = "Default";
+        for (int i = 0; i < 5; i++)
+        {
+            this->notes[i] = 0;
+        }
+        this->Contract = false;
+    }
     void SetName(string str);
     void SetNotes(int *marks);
     void SetContract(bool Contr);
