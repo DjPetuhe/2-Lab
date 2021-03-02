@@ -13,7 +13,7 @@ class Student
 {
 private:
     string name;
-    int notes[4];
+    int notes[5];
     bool Contract;
 
 public:
