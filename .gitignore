@@ -8,3 +8,19 @@ students2.csv
 Вывод.txt
 
 .vscode/launch.json
+
+.vs/2-Lab/v16/
+
+.vs/Lab2/v16/
+
+.vs/
+
+Debug/
+
+*.vcxproj
+
+Lab2.sln
+
+Lab2.vcxproj.filters
+
+Lab2.vcxproj.user
