@@ -92,3 +92,66 @@ void object_out(Student* stud, int amount_of_students)
         cout << "Contract: " << stud[i].GetContract() << endl;
     }
 }
+
+// функция которая записывает средние балыл в массив
+float* arr_avarage(Student* stud, int amount_of_students)
+{
+    float* arr = new float[amount_of_students];
+    for (int i = 0; i < amount_of_students; i++)
+    {
+        arr[i] = stud[i].Avarage();
+    }
+    return arr;
+}
+
+// функция которая считает количество бюджетников 
+int count_budgete(Student* stud, int amount_of_students)
+{
+    int count = 0;
+    for (int i = 0; i < amount_of_students; i++)
+    {
+        if (!stud[i].GetContract())
+        {
+            count++;
+        }
+    }
+    return count;
+}
+
+//функция которая  состовляет список студентов со средним баллом
+string* stipendia(Student* stud,float* avarage, int amount_of_students)
+{
+    string* str = new string[amount_of_students];
+    int count = 0;
+    for (int i = 0; i < amount_of_students; i++)
+    {
+        if (!stud[i].GetContract())
+        {   
+            str[count] = stud[i].GetName()+' '+ to_string(avarage[i]);
+            count++;
+        }
+    }
+    return str;
+}
+
+//функция которая сортирует список по среднему баллу 
+string* rating(string* str, int num)
+{
+    string temp;
+    for (int i = 0; i < num-1; i++)
+    {
+        for (int j = 0; j < num-1; j++)
+        {
+            string s = str[j].substr(str[j].find_last_of(' ')+1,(str[j].size()-1)- str[j].find_last_of(' ')+1);
+            string s1= str[j+1].substr(str[j+1].find_last_of(' ')+1, (str[j+1].size() - 1)-str[j + 1].find_last_of(' ')+1);
+            if (stof(s,0)<stof(s1,0))
+            {
+                temp = str[j];
+                str[j] = str[j + 1];
+                str[j + 1] = temp;
+            }
+        }
+    }
+    return str;
+}
+
