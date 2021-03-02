@@ -128,6 +128,11 @@ string* stipendia(Student* stud,float* avarage, int amount_of_students)
         if (!stud[i].GetContract())
         {   
             str[count] = stud[i].GetName()+' '+ to_string(avarage[i]);
+          
+            for (int k = 0; k < 3; k++)
+            {
+                str[count].pop_back();
+            }
             count++;
         }
     }
@@ -155,3 +160,15 @@ string* rating(string* str, int num)
     return str;
 }
 
+void do_rating(string* str, int num)
+{
+    ofstream outFile("Rating.csv");
+    int persents_40 = ceil((num * 40) / 100);
+    for (int i = 0; i < persents_40; i++)
+    {
+        outFile << str[i] << endl;
+    }
+    outFile.close();
+    string s = str[persents_40 - 1].substr(str[persents_40 - 1].find_last_of(' '), (str[persents_40 - 1].size() - 1) - str[persents_40 - 1].find_last_of(' ') + 1);
+    cout << "minimal avarage mark for scholarship \n" << s;
+}

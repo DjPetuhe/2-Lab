@@ -32,5 +32,5 @@ string* stipendia(Student* stud, float* avarage, int amount_of_students);
 
 string* rating(string* str, int num);
 
-
+void do_rating(string* str, int num);
 
