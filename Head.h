@@ -1,9 +1,10 @@
 #include <iostream>
 #include <string>
 #include <fstream>
+#include <math.h>
+#include <iomanip>
 #pragma once
 #include "StudentClass.h"
-#include <iomanip>
 using namespace std;
 
 /*Шаблонная функция для получения определенного значения.
@@ -22,15 +23,14 @@ void class_inicial(Student *, string *, int);
 
 string information_to_the_comma(string *);
 
-void object_out(Student*, int);
+void object_out(Student *, int);
 
-float* arr_avarage(Student* , int );
+float *arr_avarage(Student *, int);
 
-int count_budgete(Student* , int);
+int count_budgete(Student *, int);
 
-string* stipendia(Student* stud, float* avarage, int amount_of_students);
+string *stipendia(Student *, float *, int);
 
-string* rating(string* str, int num);
+string *rating(string *, int);
 
-void do_rating(string* str, int num);
-
+void do_rating(string *, int);
